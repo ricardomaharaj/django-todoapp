@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <br>
+    <ul class="list-group list-group-flush">
+        {% for todo in todos %}
+            <li class="list-group-item {% if todo.completed %}list-group-item-success{% else %}list-group-item-warning{% endif %}"
+                style="{% if todo.completed %} text-decoration: line-through {% endif %}">
+                <a href="/edit/{{ todo.id }}">{{ todo.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
