@@ -1,6 +1,4 @@
 import os
-import django_heroku
-
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +15,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'todo'
+    'django.contrib.staticfiles',
+    'TodoApp.apps.TodoappConfig',
 ]
 
 MIDDLEWARE = [
@@ -30,7 +29,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'todoSite.urls'
+ROOT_URLCONF = 'TodoSite.urls'
 
 TEMPLATES = [
     {
@@ -48,7 +47,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'todoSite.wsgi.application'
+WSGI_APPLICATION = 'TodoSite.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -82,4 +81,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-django_heroku.settings(locals())
+STATIC_URL = '/static/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

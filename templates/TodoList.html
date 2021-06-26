@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for object in object_list %}
+        <a href="{% url 'TodoDetail' object.pk %}"> {{ object.title }} </a> <br>
+    {% endfor %}
+{% endblock %}

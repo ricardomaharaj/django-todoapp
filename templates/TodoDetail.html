@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+{% block content %}
+    <p>{{ object.title }}</p>
+    <p>{{ object.completed }}</p>
+    <a href="{% url 'TodoUpdate' object.pk %}">Update</a> <br>
+    <a href="{% url 'TodoDelete' object.pk %}">Delete</a> <br>
+{% endblock %}
