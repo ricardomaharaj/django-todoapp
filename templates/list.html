@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for todo in object_list %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body {% if todo.completed %} text-success {% endif %}">
+                        <h5 class="card-title">{{ todo.title }}</h5>
+                        <p class="card-text">{{ todo.body }}</p>
+                        <a href="{% url 'update' todo.id %}" class="card-link">Update</a>
+                        <a href="{% url 'delete' todo.id %}" class="card-link">Delete</a>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated {{ todo.updated }}</small>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

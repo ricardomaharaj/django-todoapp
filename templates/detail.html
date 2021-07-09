@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ todo.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">{{ todo.updated | date }}</h6>
+        <p class="card-text">{{ todo.body }}</p>
+        <a href="{% url 'update' todo.id %}" class="card-link">Update</a>
+        <a href="{% url 'delete' todo.id %}" class="card-link">Delete</a>
+    </div>
+</div>
+{% endblock %}

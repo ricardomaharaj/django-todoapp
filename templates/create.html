@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="title" name="title" maxlength="100" required>
+            <label for="title">Title</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" id="body" name="body" maxlength="500" required></textarea>
+            <label for="body">Body</label>
+        </div>
+        <br>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="completed" name="completed">
+            <label class="form-check-label" for="completed">
+                Completed
+            </label>
+        </div>
+        <br>
+        <input type="submit" value="Save" class="btn btn-outline-primary">
+    </form>
+{% endblock %}

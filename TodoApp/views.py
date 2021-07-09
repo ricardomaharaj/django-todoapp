@@ -1,37 +1,33 @@
-from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import UpdateView, DetailView, ListView, CreateView, DeleteView
 
-from TodoApp.models import Todo
+from todoapp.models import Todo
 
 
-class TodoDetail(DetailView):
+class ListTodo(ListView):
+    queryset = Todo.objects.order_by('-updated')
+    template_name = 'list.html'
+
+
+class DetailTodo(DetailView):
     model = Todo
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
+    template_name = 'detail.html'
 
 
-class TodoList(ListView):
+class UpdateTodo(UpdateView):
     model = Todo
+    template_name = 'update.html'
+    success_url = '/list/'
+    fields = ['title', 'body', 'completed']
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        return context
 
-
-class TodoCreate(CreateView):
+class CreateTodo(CreateView):
     model = Todo
-    fields = ['title', 'completed']
-    success_url = '/todos/list/'
+    template_name = 'create.html'
+    success_url = '/list/'
+    fields = ['title', 'body', 'completed']
 
 
-class TodoUpdate(UpdateView):
+class DeleteTodo(DeleteView):
     model = Todo
-    fields = ['title', 'completed']
-    success_url = '/todos/list/'
-
-
-class TodoDelete(DeleteView):
-    model = Todo
-    success_url = '/todos/list/'
+    template_name = 'delete.html'
+    success_url = '/list/'
